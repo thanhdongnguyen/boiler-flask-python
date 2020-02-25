@@ -1,0 +1,37 @@
+version: "3"
+services:
+    python-service:
+        container_name: python-service
+        build: .
+        volumes:
+            - ./server/src:/src
+        ports:
+            - 8001:80
+        depends_on:
+            - mongo-service
+            - redis-service
+        command: bash -c "gunicorn -c /src/config.py src.main:app"
+    mongo-service:
+        image: bitnami/mongodb:4.1 
+        container_name: mongo-service
+        environment:
+            - MONGODB_USERNAME=admin
+            - MONGODB_PASSWORD=addmin
+            - MONGODB_DATABASE=
+        volumes:
+            - ./mongo:/data/db
+        ports:
+            - 27019:27017
+    redis-service:
+        image: redis:5.0
+        container_name: redis-service
+    #    nginx-teamate:
+    #image: nginx:1.17-alpine
+    #container_name: nginx-teamate
+    #ports:
+    #    - 8000:80
+    #volumes:
+    #    - ./install/teamate.conf:/etc/nginx/conf.d/teamate.conf
+    #depends_on:
+    #    - python-teamate
+    #command: /bin/bash -c "exec nginx -g 'daemon off;'"
