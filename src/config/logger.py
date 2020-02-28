@@ -9,7 +9,7 @@ class Logger:
     def __init__(self):
         self.name = __name__
         date = Timer.get_current_format()
-        self.file_name = "{}/flask_teamate_{}.log".format("/src/logs", date)
+        self.file_name = "{}/flask_log_{}.log".format("/src/logs", date)
         self.format = logging.Formatter("%(levelname)s - %(asctime)s - %(name)s - %(message)s")
 
     def addHandler(self):
