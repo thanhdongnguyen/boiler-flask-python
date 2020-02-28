@@ -16,17 +16,17 @@ logger = Logger()
 @app.before_request
 def before_request():
     
-    token = request.headers.get("client-authorization")
-    
-    if not token or not JWT.auth(token):
-        return Message.error(11) 
-
     database = Database()
     global_context.db = database.connect()
 
 @app.after_request
 def after_request(response):
     #global_context.db.close()
+
+
+    '''
+        Add response header to fix error CORS
+    '''
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Headers"] = "client-authorization"
     return response
