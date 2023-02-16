@@ -9,7 +9,7 @@ setup(
         "gunicorn==20.0.4",
         "flask==1.1.1",
         "requests==2.22.0",
-        "werkzeug==1.0.0",
+        "werkzeug==2.2.3",
         "cachelib==0.1",
         "pymongo==3.4",
         "six==1.10.0",
