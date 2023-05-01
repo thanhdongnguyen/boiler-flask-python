@@ -7,7 +7,7 @@ setup(
     packages=find_packages(exclude=["tests", "test", "*.tests", "tests.*", "*.tests.*"]),
     install_requires=[
         "gunicorn==20.0.4",
-        "flask==1.1.1",
+        "flask==2.3.2",
         "requests==2.22.0",
         "werkzeug==1.0.0",
         "cachelib==0.1",
